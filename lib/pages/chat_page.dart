@@ -34,21 +34,21 @@ class _ChatPageState extends State<ChatPage> {
 
   getBody(){
     return
-      Padding(
-        padding: const EdgeInsets.only(top: 15),
-        child: Column(
-            children: List.generate(chatsData.length, (index) {
-            return ChatItem(
-              chatsData[index],
-              onTap: (){
-                print(index);
-              },
-            );
-          })
+      SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 15),
+          child: Column(
+              children: List.generate(chatsData.length, (index) {
+              return ChatItem(
+                chatsData[index],
+                onTap: (){
+                  print(index);
+                },
+              );
+            })
+          ),
         ),
       );
-
   }
-
 }
 

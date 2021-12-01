@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:telegram/pages/home_page.dart';
 
+import 'theme/colors.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primaryColor: primary,
       ),
       home: HomePage(),
     );

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:telegram/theme/colors.dart';
 import 'package:telegram/widgets/avatar_image.dart';
+import 'package:telegram/widgets/setting_item.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({ Key? key }) : super(key: key);
@@ -17,7 +18,6 @@ class _SettingPageState extends State<SettingPage> {
       body: getBody()
     );
   }
-
 
   Widget getBody() {
     return ListView(
@@ -35,11 +35,9 @@ class _SettingPageState extends State<SettingPage> {
                 children: [
                   Container(width: 40,),
                   AvatarImage(
-                    "profile2", 
+                    "profile3", 
                     width: 80,
                     height: 80,
-                    trBackground: true,
-                    bgColor: Theme.of(context).cardColor,
                   ),
                   Container(
                     width: 40,
@@ -91,23 +89,32 @@ class _SettingPageState extends State<SettingPage> {
           ),
           child: Column(
             children: [
-              SettingItem(title: "Saved Messages", leadingIcon: Icons.bookmark_outline,
+              SettingItem(title: "Saved Messages", leadingIcon: Icons.bookmark_outline, bgIconColor: Colors.blue,
                 onTap: (){
                   // Get.toNamed('/space');
                 },
               ),
-              Divider(height: 0, color: Colors.grey.withOpacity(0.8),),
-              SettingItem(title: "Recent Calls", leadingIcon: Icons.call_outlined,
+              Padding(
+                padding: const EdgeInsets.only(left: 45),
+                child: Divider(height: 0, color: Colors.grey.withOpacity(0.8),),
+              ),
+              SettingItem(title: "Recent Calls", leadingIcon: Icons.call_outlined, bgIconColor: Colors.green,
                 onTap: (){
                 },
               ),
-              Divider(height: 0, color: Colors.grey.withOpacity(0.8),),
-              SettingItem(title: "Devices", leadingIcon: Icons.devices,
+              Padding(
+                padding: const EdgeInsets.only(left: 45),
+                child: Divider(height: 0, color: Colors.grey.withOpacity(0.8),),
+              ),
+              SettingItem(title: "Devices", leadingIcon: Icons.devices, bgIconColor: Colors.orange,
                 onTap: (){
                 },
               ),
-              Divider(height: 0, color: Colors.grey.withOpacity(0.8),),
-              SettingItem(title: "Chat Folders", leadingIcon: Icons.folder_open_outlined,
+              Padding(
+                padding: const EdgeInsets.only(left: 45),
+                child: Divider(height: 0, color: Colors.grey.withOpacity(0.8),),
+              ),
+              SettingItem(title: "Chat Folders", leadingIcon: Icons.folder_open_outlined, bgIconColor: Colors.lightBlue.shade300,
                 onTap: (){
                 },
               ),
@@ -131,23 +138,32 @@ class _SettingPageState extends State<SettingPage> {
           ),
           child: Column(
             children: [
-              SettingItem(title: "Notifications and Sounds", leadingIcon: Icons.notifications_on_outlined,
+              SettingItem(title: "Notifications and Sounds", leadingIcon: Icons.notifications_on_outlined, bgIconColor: Colors.red,
                 onTap: (){
                   
                 }
               ),
-              Divider(height: 0, color: Colors.grey.withOpacity(0.8),),
-              SettingItem(title: "Privacy and Security", leadingIcon: Icons.lock_outline,
+              Padding(
+                padding: const EdgeInsets.only(left: 45),
+                child: Divider(height: 0, color: Colors.grey.withOpacity(0.8),),
+              ),
+              SettingItem(title: "Privacy and Security", leadingIcon: Icons.lock_outline, bgIconColor: Colors.grey,
                 onTap: (){
                 }
               ),
-              Divider(height: 0, color: Colors.grey.withOpacity(0.8),),
-              SettingItem(title: "Data and Storage", leadingIcon: Icons.storage_outlined,
+              Padding(
+                padding: const EdgeInsets.only(left: 45),
+                child: Divider(height: 0, color: Colors.grey.withOpacity(0.8),),
+              ),
+              SettingItem(title: "Data and Storage", leadingIcon: Icons.storage_outlined, bgIconColor: Colors.lightGreen,
                 onTap: (){
                 }
               ),
-              Divider(height: 0, color: Colors.grey.withOpacity(0.8),),
-              SettingItem(title: "Appearance", leadingIcon: Icons.dark_mode_outlined,
+              Padding(
+                padding: const EdgeInsets.only(left: 45),
+                child: Divider(height: 0, color: Colors.grey.withOpacity(0.8),),
+              ),
+              SettingItem(title: "Appearance", leadingIcon: Icons.dark_mode_outlined, bgIconColor: Colors.lightBlue,
                 onTap: (){
                 }
               ),
@@ -171,7 +187,7 @@ class _SettingPageState extends State<SettingPage> {
           ),
           child: Column(
             children: [
-              SettingItem(title: "Log Out", leadingIcon: Icons.logout_outlined,
+              SettingItem(title: "Log Out", leadingIcon: Icons.logout_outlined, bgIconColor: Colors.grey.shade400,
                 onTap: (){
                 },
               ),
@@ -180,62 +196,6 @@ class _SettingPageState extends State<SettingPage> {
         ),
         SizedBox(height: 10,),
       ],
-    );
-  }
-}
-
-
-class SettingItem extends StatelessWidget {
-  final IconData? leadingIcon;
-  final Color? leadingIconColor;
-  final String title;
-  final GestureTapCallback? onTap;
-  const SettingItem({ Key? key, required this.title, this.onTap, this.leadingIcon, this.leadingIconColor}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.only(top: 15, bottom: 15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: leadingIcon != null ?
-          [
-            Icon(
-              leadingIcon,
-              size: 24,
-              color: leadingIconColor,
-            ),
-            SizedBox(width: 10,),
-            Expanded(
-              child: Text(
-                title,
-                style: TextStyle(fontSize: 16),
-              ),
-            ),
-            Icon(
-              Icons.arrow_forward_ios,
-              color: Colors.grey,
-              size: 17,
-            )
-          ]
-          :
-          [
-            Expanded(
-              child: Text(
-                title,
-                style: TextStyle(fontSize: 16),
-              ),
-            ),
-            Icon(
-              Icons.arrow_forward_ios,
-              color: Colors.grey,
-              size: 17,
-            )
-          ],
-        ),
-      ),
     );
   }
 }
