@@ -12,11 +12,31 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+
+  bool showBody = false;
+  @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(Duration(milliseconds: 200), (){
+      setState(() {
+        showBody = true;
+      });
+     });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: getBody()
+      body: animatedBody()
     );
+  }
+
+  animatedBody(){
+    return AnimatedCrossFade(firstChild: getBody(), secondChild: Container(), 
+            crossFadeState: showBody ? CrossFadeState.showFirst : CrossFadeState.showSecond, 
+            duration: Duration(milliseconds: 600)
+          );
   }
 
   Widget getBody() {

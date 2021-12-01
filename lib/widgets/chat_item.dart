@@ -74,7 +74,7 @@ class ChatItem extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 60),
-              child: Divider(color: Colors.grey,),
+              child: Divider(color: Colors.grey.withOpacity(0.8),),
             )
           ],
         ),

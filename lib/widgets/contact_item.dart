@@ -28,7 +28,7 @@ class ContactItem extends StatelessWidget {
                     SizedBox(height: 5,),
                     Text("Last seen recently", style: TextStyle(fontSize: 14, color: Colors.grey,),),
                     SizedBox(height: 5,),
-                    Divider(color: Colors.grey,)
+                    Divider(color: Colors.grey.withOpacity(0.8),)
                   ],
                 ),
               )

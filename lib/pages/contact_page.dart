@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:telegram/theme/colors.dart';
 import 'package:telegram/widgets/contact_item.dart';
 
@@ -38,25 +39,32 @@ class _ContactPageState extends State<ContactPage> {
             ),
           ),
           SliverList(
-            delegate: SliverChildListDelegate([
-              SizedBox(height: 10,),
-              getFindNearby(),
-              getInviteFriends(),
-              ContactItem(image: "test1", name: "Jonh Ceb",),
-              ContactItem(image: "test2", name: "Jonh Ceb",),
-              ContactItem(image: "test3", name: "Jonh Ceb",),
-              ContactItem(image: "test4", name: "Jonh Ceb",),
-              ContactItem(image: "test5", name: "Jonh Ceb",),
-              ContactItem(image: "test6", name: "Jonh Ceb",),
-              ContactItem(image: "test7", name: "Jonh Ceb",),
-              ContactItem(image: "test8", name: "Jonh Ceb",),
-              ContactItem(image: "test9", name: "Jonh Ceb",),
-              ContactItem(image: "test10", name: "Jonh Ceb",),
-            ]),
+            delegate: SliverChildListDelegate(
+              getListContact()
+            ),
           ),
         ],
       ),
     );
+  }
+
+  List<Widget> getListContact(){
+    List<Widget> contacts = 
+      List.generate(14, (index) {
+                return  AnimationConfiguration.staggeredList(
+                    position: index,
+                    duration: const Duration(milliseconds: 300),
+                    child: SlideAnimation(
+                      verticalOffset: 50.0,
+                      child: FadeInAnimation(
+                        child: ContactItem(image: "$index", name: "Jonh Ceb",),
+                      ),
+                    ),
+                  );
+              });
+    List<Widget> list = [getFindNearby(), getInviteFriends()];
+    list.addAll(contacts);
+    return list;
   }
 
   Widget getSearchBox(){
@@ -111,6 +119,7 @@ class _ContactPageState extends State<ContactPage> {
         padding: EdgeInsets.only(left: 10, right: 10),
         child: Column(
           children: [
+            SizedBox(height: 10,),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
